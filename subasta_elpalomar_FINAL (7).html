@@ -1,0 +1,1298 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subasta por Amor al Cine - El Palomar</title>
+    <meta name="description" content="Modelo híbrido de financiamiento: coleccionismo de arte + producción cinematográfica. Apoya El Palomar, ópera prima de Rafael Farga.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --off-white: #F8F7F4;
+            --carbon: #1A1A1A;
+            --gold: #B8956A;
+            --forest-green: #2C3E2C;
+            --warm-gray: #E8E6E1;
+            --text-gray: #666;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--off-white);
+            color: var(--carbon);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* HERO */
+        .hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: var(--carbon);
+        }
+        
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.7;
+            filter: brightness(0.6);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: white;
+            max-width: 900px;
+            padding: 0 20px;
+        }
+        
+        .hero-subtitle {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            font-weight: 400;
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+        
+        .hero-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4.5rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+        
+        .hero-film-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            font-weight: 400;
+            font-style: italic;
+            margin-bottom: 40px;
+            color: var(--gold);
+        }
+        
+        .hero-date {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 500;
+            letter-spacing: 2px;
+            margin-bottom: 60px;
+        }
+        
+        /* NAV */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(248, 247, 244, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+        
+        nav.scrolled {
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+        }
+        
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--carbon);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+        
+        /* SECTIONS */
+        section {
+            padding: 120px 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 60px;
+            text-align: center;
+            letter-spacing: 1px;
+        }
+        
+        .curatorial-text {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .curatorial-text p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            color: var(--carbon);
+        }
+        
+        .curatorial-text p:first-of-type::first-letter {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4rem;
+            font-weight: 700;
+            float: left;
+            line-height: 1;
+            margin: 0 3px 0 0;
+            color: var(--gold);
+        }
+        
+        .section-divider {
+            width: 60px;
+            height: 2px;
+            background: var(--gold);
+            margin: 60px auto;
+        }
+        
+        /* BOXES */
+        .content-box {
+            background: white;
+            border-radius: 20px;
+            padding: 80px 60px;
+            box-shadow: 0 10px 60px rgba(0,0,0,0.05);
+        }
+        
+        .content-box h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: var(--forest-green);
+        }
+        
+        /* EQUIPO */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+        
+        .team-member {
+            text-align: center;
+        }
+        
+        .team-photo {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 20px;
+            border: 4px solid var(--gold);
+        }
+        
+        .team-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        .team-role {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.9rem;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+        
+        .team-bio {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: var(--text-gray);
+        }
+        
+        /* VIDEO SECTION */
+        .video-section {
+            background: var(--warm-gray);
+            border-radius: 12px;
+            padding: 40px;
+            margin: 40px 0;
+        }
+        
+        .video-section h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .video-section p {
+            line-height: 2;
+            margin-bottom: 20px;
+        }
+        
+        .video-section strong {
+            color: var(--carbon);
+        }
+        
+        /* CATALOG */
+        .catalog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+        
+        .artwork-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .artwork-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+        }
+        
+        .artwork-image {
+            width: 100%;
+            aspect-ratio: 4/5;
+            object-fit: cover;
+            background: var(--warm-gray);
+        }
+        
+        .artwork-image.placeholder {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--warm-gray) 0%, var(--off-white) 100%);
+            color: var(--text-gray);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            font-style: italic;
+        }
+        
+        .artwork-info {
+            padding: 25px;
+        }
+        
+        .artwork-artist {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--gold);
+            margin-bottom: 8px;
+        }
+        
+        .artwork-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .artwork-details {
+            font-size: 0.9rem;
+            color: var(--text-gray);
+            line-height: 1.6;
+        }
+        
+        /* STORYBOARD */
+        .storyboard-special {
+            background: linear-gradient(135deg, #ffffff 0%, #faf9f7 100%);
+            border: 3px solid var(--gold);
+            border-radius: 20px;
+            padding: 60px;
+            margin: 80px 0;
+            text-align: center;
+        }
+        
+        .storyboard-badge {
+            display: inline-block;
+            background: var(--gold);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 25px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 30px;
+        }
+        
+        .storyboard-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+        
+        .storyboard-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-gray);
+            margin-bottom: 40px;
+        }
+        
+        .storyboard-price {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--gold);
+            margin: 30px 0;
+        }
+        
+        /* LEVELS */
+        .levels-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+        
+        .level-card {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 4px 30px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+        }
+        
+        .level-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .level-card.featured {
+            border: 3px solid var(--gold);
+            background: linear-gradient(135deg, #ffffff 0%, #faf9f7 100%);
+        }
+        
+        .level-name {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+        
+        .level-price {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 25px;
+        }
+        
+        .level-benefits {
+            list-style: none;
+        }
+        
+        .level-benefits li {
+            padding: 10px 0;
+            padding-left: 25px;
+            position: relative;
+            font-size: 0.95rem;
+        }
+        
+        .level-benefits li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: bold;
+        }
+        
+        /* FLEXIBLE BOX */
+        .flexible-box {
+            background: var(--forest-green);
+            color: white;
+            border-radius: 20px;
+            padding: 50px;
+            margin: 60px 0;
+            text-align: center;
+        }
+        
+        .flexible-box h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        
+        /* FISCAL BOX */
+        .fiscal-box {
+            background: white;
+            border-left: 4px solid var(--gold);
+            border-radius: 12px;
+            padding: 40px;
+            margin: 40px 0;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+        
+        .fiscal-box h4 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: var(--gold);
+        }
+        
+        /* TIMELINE */
+        .timeline {
+            max-width: 800px;
+            margin: 60px auto;
+        }
+        
+        .timeline-item {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .timeline-time {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--gold);
+            min-width: 150px;
+        }
+        
+        .timeline-content {
+            flex: 1;
+            padding-bottom: 40px;
+            border-left: 2px solid var(--warm-gray);
+            padding-left: 30px;
+        }
+        
+        .timeline-content h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+        
+        /* FOOTER */
+        footer {
+            background: var(--carbon);
+            color: white;
+            padding: 60px 40px 40px;
+            text-align: center;
+        }
+        
+        .footer-contact {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--gold);
+            margin: 20px 0;
+        }
+        
+        /* MODAL */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.95);
+            overflow-y: auto;
+        }
+        
+        .modal-content {
+            position: relative;
+            margin: 50px auto;
+            max-width: 1200px;
+            padding: 40px;
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 2001;
+            transition: color 0.3s ease;
+        }
+        
+        .modal-close:hover {
+            color: var(--gold);
+        }
+        
+        .modal-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+        
+        .modal-image-container img {
+            width: 100%;
+            border-radius: 12px;
+        }
+        
+        .modal-info {
+            color: white;
+        }
+        
+        .modal-artist {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--gold);
+            margin-bottom: 15px;
+        }
+        
+        .modal-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem;
+            margin-bottom: 30px;
+        }
+        
+        .modal-details p {
+            font-size: 1.1rem;
+            line-height: 2;
+            margin-bottom: 15px;
+        }
+        
+        .modal-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(184, 149, 106, 0.9);
+            color: white;
+            border: none;
+            font-size: 2rem;
+            padding: 20px 30px;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .modal-nav:hover {
+            background: var(--gold);
+        }
+        
+        .modal-prev {
+            left: 20px;
+        }
+        
+        .modal-next {
+            right: 20px;
+        }
+        
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .modal-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            section {
+                padding: 80px 20px;
+            }
+            
+            .content-box {
+                padding: 40px 30px;
+            }
+            
+            .level-benefits {
+                columns: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav id="nav">
+        <div class="nav-logo">
+            <svg width="200" height="40" viewBox="0 0 200 40" xmlns="http://www.w3.org/2000/svg">
+                <text x="5" y="25" font-family="'Space Grotesk', sans-serif" font-size="18" font-weight="700" fill="#1A1A1A">
+                    EME[ART]SPACE
+                </text>
+                <text x="5" y="35" font-family="Inter, sans-serif" font-size="8" fill="#666" letter-spacing="1">
+                    by MANIFESTO
+                </text>
+            </svg>
+            
+            <svg width="160" height="56" viewBox="0 0 160 56" xmlns="http://www.w3.org/2000/svg">
+                <g transform="translate(60, 7)">
+                    <path d="M20 7 C20 3.5, 17 0, 14 0 C11 0, 8.5 2, 7 4 C5.5 2, 3 0, 0 0 C-3 0, -7 3.5, -7 7 C-7 12, 0 18, 7 24 C14 18, 20 12, 20 7" 
+                          fill="none" stroke="#B8956A" stroke-width="1.6"/>
+                    <rect x="-1" y="3.5" width="2.5" height="2.5" fill="#B8956A" opacity="0.5"/>
+                    <rect x="12.5" y="3.5" width="2.5" height="2.5" fill="#B8956A" opacity="0.5"/>
+                    <rect x="-1" y="13" width="2.5" height="2.5" fill="#B8956A" opacity="0.5"/>
+                    <rect x="12.5" y="13" width="2.5" height="2.5" fill="#B8956A" opacity="0.5"/>
+                </g>
+                
+                <text x="80" y="36" text-anchor="middle" font-family="'Inter', sans-serif" font-size="11" font-weight="600" fill="#1a1a1a" letter-spacing="0.3">
+                    FUNDACIÓN
+                </text>
+                <text x="80" y="47" text-anchor="middle" font-family="'Inter', sans-serif" font-size="13" font-weight="700" fill="#1a1a1a" letter-spacing="0.7">
+                    AMOR AL CINE
+                </text>
+                <text x="80" y="54" text-anchor="middle" font-family="'Inter', sans-serif" font-size="8" font-weight="400" fill="#666" letter-spacing="1.5">
+                    A.C
+                </text>
+            </svg>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#proyecto">El Proyecto</a></li>
+            <li><a href="#equipo">Equipo</a></li>
+            <li><a href="#video">Video</a></li>
+            <li><a href="#catalogo">Catálogo</a></li>
+            <li><a href="#participar">Participar</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero">
+        <img src="https://i.imgur.com/LlwyRpm.jpg" alt="Amanecer - Olmedo Quimbita" class="hero-bg">
+        <div class="hero-content" data-aos="fade-up" data-aos-duration="1000">
+            <div class="hero-subtitle">MODELO HÍBRIDO DE FINANCIAMIENTO</div>
+            <h1 class="hero-title">SUBASTA POR<br>AMOR AL CINE</h1>
+            <div class="hero-film-title">El Palomar</div>
+            <div class="hero-date">5 DE MARZO 2026 • 8:00 PM</div>
+        </div>
+    </section>
+
+    <section id="proyecto" data-aos="fade-up">
+        <h2 class="section-title">El Proyecto</h2>
+        <div class="curatorial-text">
+            <p>Esta subasta nace de una pregunta concreta: ¿cómo generar nuevos modelos de financiamiento para el cine independiente sin sacrificar radicalidad, riesgo ni autoría?</p>
+            
+            <p>El cine es, quizá, el arte más material de todos. Su materia prima es la realidad misma: cuerpos, espacios, luz, tiempo. A diferencia de otras disciplinas, producir cine implica coordinar recursos humanos, técnicos y económicos en una escala que lo convierte en uno de los lenguajes con mayor barrera de entrada.</p>
+            
+            <p>Frente a este panorama, Manifesto, eme[art]space y Fundación Amor al Cine A.C desarrollan un modelo híbrido que conecta dos ecosistemas históricamente cercanos pero pocas veces integrados de manera estructural: el coleccionismo de arte y la producción cinematográfica.</p>
+            
+            <p><strong>A través de esta subasta, el coleccionista adquiere una obra de arte con valor estético y patrimonial propio y, al mismo tiempo, se vincula directamente con la producción de un largometraje de ficción.</strong> Dependiendo del número y valor de las obras adquiridas, el comprador accede a distintos niveles de participación dentro del proyecto cinematográfico: desde productor asociado hasta productor ejecutivo, incluyendo beneficios como acceso a rodaje, invitaciones a estrenos, presencia en materiales de prensa y, en ciertos casos, participación en la monetización de la obra.</p>
+        </div>
+    </section>
+
+    <section data-aos="fade-up">
+        <div class="content-box">
+            <h2>EL PALOMAR: CINE URGENTE, RADICAL Y NECESARIO</h2>
+            
+            <div class="curatorial-text">
+                <p>En esta edición, la subasta apoya el desarrollo de El Palomar, largometraje de ficción y ópera prima del director y guionista Rafael Farga.</p>
+                
+                <p>El Palomar es una exploración íntima y brutalmente honesta de la masculinidad mexicana contemporánea. A través de la mirada de Diego, la película construye un retrato sin concesiones sobre identidad, vulnerabilidad y los rituales, visibles e invisibles, que definen lo que significa ser hombre en el México de hoy.</p>
+                
+                <p>Con una narrativa que alterna entre la memoria de la infancia y el presente más descarnado, la película habita espacios de encierro: desde la casa familiar hasta un anexo donde Diego es despojado de su voz.</p>
+                
+                <p>Gran parte de la película transcurre en silencio forzado. Farga construye un lenguaje radicalmente visual: cuerpos que comunican lo que las palabras no pueden decir, rituales filmados con precisión casi documental, imágenes que no se han visto antes en el cine. La cámara no juzga, observa. No explica, registra.</p>
+                
+                <p><strong>El Palomar no solo retrata la experiencia del anexo: se construye desde y con quienes la vivieron.</strong></p>
+                
+                <p>Los anexados que aparecen en la película son no-actores que decidieron participar en este proyecto como un ejercicio de memoria, re-significación y sanación. Antes de filmar, trabajaron en talleres de actuación y acercamiento al lenguaje audiovisual, no solo para prepararse como intérpretes, sino para apropiarse de la narrativa.</p>
+                
+                <p>Algunos de ellos tienen la espinita del cine y las artes visuales desde hace años. Esta película es también una puerta para que exploren esa vocación, para que el cine sea una herramienta de transformación, no una extracción.</p>
+                
+                <p>Por eso <strong>El Palomar es más que una película: es un acto de cine comunitario</strong> que requiere recursos no solo para la producción técnica, sino para sostener los talleres, los procesos de formación y el acompañamiento a largo plazo de quienes participan.</p>
+                
+                <p>Es un cine que no busca respuestas fáciles ni redenciones cómodas. Es, ante todo, un cine que no se permite mentiras.</p>
+                
+                <p><strong>Apoyar esta subasta es apostar por un cine que no se negocia.</strong> Por un modelo donde el arte cinematográfico es también un espacio de dignificación y posibilidad, y donde los coleccionistas entienden que las obras más importantes pocas veces nacen de los circuitos convencionales, sino del encuentro entre visión artística y valentía compartida.</p>
+            </div>
+        </div>
+    </section>
+
+    <section data-aos="fade-up">
+        <h2 class="section-title">Cuerpo, Territorio y Masculinidad:<br>La Curaduría</h2>
+        <div class="curatorial-text">
+            <p>Las obras reunidas para esta subasta no responden a una sola estética ni a una escuela específica. Se trata de una curaduría de firmas con lenguajes consolidados y voces singulares dentro de la plástica contemporánea, cuya diversidad dialoga con el espíritu del proyecto cinematográfico que apoyan: un cine de autor, radical en su forma y honesto en su mirada.</p>
+            
+            <p>Jorge Alzaga, Vladimir Cora, Daniel Kent, Peter Palombi, Víctor Hugo, Olmedo Quimbita, José Fors, Gabriel Mariscal, Luis Valsoto y Juan Carlos Macías comparten algo más que su oficio: todos trabajan desde una urgencia formal que no se conforma con la representación.</p>
+            
+            <p>En su mayoría latinoamericanos, estos artistas construyen imaginarios donde el cuerpo es territorio, la figuración es pregunta y la pincelada, o el trazo, es un gesto político. Sus obras no ilustran El Palomar: lo acompañan, lo tensan, lo expanden.</p>
+            
+            <p>Hay aquí una exploración compartida de la masculinidad como construcción, no como dato biológico. Hay cuerpos que se muestran y cuerpos que se ocultan. Hay rituales cotidianos que se vuelven violentos por repetición. Hay espacios cerrados, arquitectónicos y emocionales, donde la identidad se negocia a diario.</p>
+            
+            <p>Vladimir Cora y su trazo nervioso, casi compulsivo. José Fors y sus figuras que habitan entre lo humano y lo post-humano. Olmedo Quimbita y su colorido que esconde melancolía. Juan Carlos Macías y sus monotipos que parecen confesiones grabadas en la piel del papel. Peter Palombi y esos retratos que sostienen la mirada sin pestañear.</p>
+            
+            <p>Cada obra en esta subasta es un acto de resistencia contra la comodidad estética. Cada pieza es una invitación a mirar más allá de lo evidente.</p>
+            
+            <p>Y al adquirirlas, el coleccionista no solo suma a su acervo: se convierte en cómplice de una película que necesita existir. Se vuelve productor de un cine que cuestiona, incomoda y, con suerte, transforma.</p>
+        </div>
+    </section>
+
+    <section id="equipo" data-aos="fade-up">
+        <h2 class="section-title">Equipo Creativo</h2>
+        <div class="team-grid">
+            <div class="team-member" data-aos="fade-up" data-aos-delay="100">
+                <img src="https://i.imgur.com/xt8msDD.jpg" alt="Rafael Farga" class="team-photo">
+                <div class="team-name">Rafael Farga</div>
+                <div class="team-role">Director / Guionista</div>
+                <div class="team-bio">
+                    Director y guionista mexicano. El Palomar es su ópera prima, un proyecto que nace de una necesidad personal de explorar la masculinidad, el encierro y la transformación a través del cine.
+                </div>
+            </div>
+            
+            <div class="team-member" data-aos="fade-up" data-aos-delay="200">
+                <img src="https://i.imgur.com/qdTVrvC.jpg" alt="Michael Rowe" class="team-photo">
+                <div class="team-name">Michael Rowe</div>
+                <div class="team-role">Productor Ejecutivo</div>
+                <div class="team-bio">
+                    Ganador de la Cámara de Oro en el Festival de Cannes 2010 por Año Bisiesto. Director y productor con una trayectoria de más de 15 años en cine independiente internacional.
+                </div>
+            </div>
+            
+            <div class="team-member" data-aos="fade-up" data-aos-delay="300">
+                <img src="https://i.imgur.com/9PYM8Ty.jpg" alt="Octavio Aráuz" class="team-photo">
+                <div class="team-name">Octavio Aráuz</div>
+                <div class="team-role">Director de Fotografía</div>
+                <div class="team-bio">
+                    Reconocido internacionalmente por su trabajo en Los Lobos (Samuel Kishi, 2019), Yo'onik y Todo el Silencio. Su cinematografía se caracteriza por una mirada íntima y visceral.
+                </div>
+            </div>
+            
+            <div class="team-member" data-aos="fade-up" data-aos-delay="400">
+                <img src="https://i.imgur.com/xMJIL4C.jpg" alt="Francia Castañeda" class="team-photo">
+                <div class="team-name">Francia Castañeda</div>
+                <div class="team-role">Acting Coach</div>
+                <div class="team-bio">
+                    Acting coach en Ojitos de Huevo, Valiendo Madre, y colaboraciones con Alonso Ruizpalacios, Joaquín del Paso y Fernando Eimbcke (Moscas, WIP ganador en San Sebastián).
+                </div>
+            </div>
+            
+            <div class="team-member" data-aos="fade-up" data-aos-delay="500">
+                <img src="https://i.imgur.com/CTsBDu5.jpg" alt="Patricia Ortiz" class="team-photo">
+                <div class="team-name">Patricia Ortiz</div>
+                <div class="team-role">Coordinadora de Intimidad</div>
+                <div class="team-bio">
+                    Especialista en coordinación de escenas de intimidad y violencia, garantizando un entorno seguro y profesional para el elenco durante el rodaje.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="video" data-aos="fade-up">
+        <div class="content-box">
+            <h2 style="text-align: center;">Video Institucional</h2>
+            
+            <div class="curatorial-text">
+                <div style="text-align: center; font-size: 1.2rem; margin-bottom: 40px; color: var(--text-gray);">
+                    Un pitch emocional de 2 minutos que conecta coleccionismo de arte con producción cinematográfica
+                </div>
+                
+                <div class="video-section">
+                    <h3>Guión del Video</h3>
+                    
+                    <p><strong>APERTURA - KATHERINE BERGENGRUEN</strong><br>
+                    <em>(sentada en su galería, luz natural, espacio limpio)</em></p>
+                    
+                    <p>"El cine, al igual que la escultura, es uno de los artes más plásticos, materiales y moleculares que existen."</p>
+                    
+                    <p>"Mientras el escritor recurre a los adjetivos para describir acciones y objetos, el pintor trabaja con un bastidor y pigmento, y el músico con un instrumento, el cineasta establece una relación distinta con la realidad: su materia prima es el registro mismo de lo real."</p>
+                    
+                    <p>"El cine no representa: organiza cuerpos, espacios, luz y tiempo."</p>
+                    
+                    <p>"Esa relación directa con la realidad hace que el cine tenga una de las barreras de entrada más altas dentro de las artes. Para dimensionarlo: cada año se producen alrededor de 125 millones de pinturas, más de 40 millones de canciones, cerca de un millón de libros… y apenas unas diez mil producciones cinematográficas a nivel global."</p>
+                    
+                    <p>"Hacer cine cuesta. Y justamente por eso nos interesa pensar nuevas formas de acompañar su producción."</p>
+                    
+                    <div class="section-divider"></div>
+                    
+                    <p><strong>CORTE A - MICHAEL ROWE</strong><br>
+                    <em>(productor ejecutivo, plano sobrio)</em></p>
+                    
+                    <p>"Los estímulos públicos han sido fundamentales para consolidar la industria cinematográfica en muchos países, incluido México. Han permitido que exista una infraestructura, una profesionalización y una continuidad."</p>
+                    
+                    <p>"Al mismo tiempo, creemos que es saludable que esos modelos convivan con otros esquemas de financiamiento privado y cultural, que amplíen las posibilidades creativas."</p>
+                    
+                    <p>"No se trata de sustituir, sino de sumar. De generar condiciones para que historias con miradas singulares, incluso radicales, puedan encontrar los recursos necesarios para existir."</p>
+                    
+                    <div class="section-divider"></div>
+                    
+                    <p><strong>CORTE A - PRESIDENTA FUNDACIÓN AMOR AL CINE</strong><br>
+                    <em>(lobby de hotel / cineforo)</em></p>
+                    
+                    <p>"Desde Fundación Amor al Cine trabajamos en la articulación entre distintos agentes culturales para apoyar proyectos cinematográficos en todas sus etapas: desde la preproducción hasta la distribución."</p>
+                    
+                    <p>"En esta ocasión, junto con Manifesto y eme[art]space, desarrollamos un modelo de financiamiento privado que conecta el coleccionismo de arte con la producción cinematográfica."</p>
+                    
+                    <p>"A través del certificado de autenticidad, el coleccionista adquiere una obra con valor artístico y patrimonial propio, mientras una parte de esa adquisición se destina a apoyar la producción de una película."</p>
+                    
+                    <p>"Dependiendo del número y valor de las obras adquiridas, el coleccionista accede a distintos niveles de participación dentro del proyecto cinematográfico: desde productor asociado hasta productor ejecutivo, con beneficios como acceso a set, invitaciones a estrenos y participación en la monetización."</p>
+                    
+                    <p>"En esta edición, el proyecto que se apoya es El Palomar, ópera prima del director y guionista Rafael Farga."</p>
+                    
+                    <div class="section-divider"></div>
+                    
+                    <p><strong>CORTE A - RAFAEL FARGA</strong><br>
+                    <em>(director/guionista, plano medio, espacio neutro)</em></p>
+                    
+                    <p><strong>SOBRE LA CURADURÍA:</strong></p>
+                    
+                    <p>"Cuando empezamos a pensar qué obras debían acompañar esta subasta, la pregunta no era '¿qué artistas están disponibles?' sino '¿qué miradas dialogan honestamente con El Palomar sin ilustrarlo?'"</p>
+                    
+                    <p>"Los artistas que reunimos aquí, Jorge Alzaga, Vladimir Cora, Daniel Kent, Peter Palombi, Víctor Hugo, Olmedo Quimbita, José Fors, Gabriel Mariscal, Luis Valsoto, Juan Carlos Macías, comparten algo: todos trabajan el cuerpo como territorio, la figuración como pregunta, no como respuesta."</p>
+                    
+                    <p>"En su mayoría son latinoamericanos. Y eso no es casual. El Palomar es una película profundamente mexicana, que habla de masculinidad, encierro y ritual desde un lugar muy específico. Necesitaba estar acompañada de artistas que entiendan esas coordenadas."</p>
+                    
+                    <p><strong>SOBRE EL PALOMAR Y LA COMUNIDAD:</strong></p>
+                    
+                    <p>"El Palomar es una película radicalmente honesta sobre masculinidad, encierro y silencio. Pero es también un proyecto de cine comunitario."</p>
+                    
+                    <p>"Los anexados que aparecen en la película son personas reales que vivieron esa experiencia y decidieron participar como un ejercicio de memoria y sanación."</p>
+                    
+                    <p>"Antes de filmar, trabajamos con ellos en talleres de actuación y lenguaje audiovisual. No solo para prepararlos como actores, sino para que se apropien de la narrativa. Para que el cine sea una herramienta, no una extracción."</p>
+                    
+                    <p>"Algunos tienen la espinita del cine desde hace años. Esta película es su puerta."</p>
+                    
+                    <p><strong>SOBRE EL MODELO:</strong></p>
+                    
+                    <p>"Este es un modelo donde todos ganan."</p>
+                    
+                    <p>"El coleccionista adquiere una obra con valor artístico y patrimonial real, una pieza que se valoriza en el tiempo. Y al mismo tiempo, se convierte en productor de una película, con acceso a beneficios que van desde créditos hasta formar parte de la monetización del proyecto."</p>
+                    
+                    <p>"En esta alianza, el arte financia cine, el cine expande el arte, y ambos generan valor cultural y económico compartido."</p>
+                    
+                    <p>"Por eso hablamos de socios. De personas que entienden que invertir en arte es también invertir en transformación. Y que las obras más importantes necesitan valentía compartida para existir."</p>
+                    
+                    <div class="section-divider"></div>
+                    
+                    <p><strong>CIERRE - KATHERINE BERGENGRUEN</strong></p>
+                    
+                    <p>"Esta subasta propone algo más que una transacción: propone un ecosistema cultural donde artista, coleccionista y cineasta forman parte de una misma cadena de valor."</p>
+                    
+                    <p>"Los invitamos a acompañarnos en esta edición de Subasta por Amor al Cine, a conocer las obras, a los artistas y a participar en un modelo que apuesta por la continuidad del cine independiente desde el arte."</p>
+                    
+                    <p>"Nos vemos el 5 de marzo."</p>
+                </div>
+                
+                <p style="text-align: center; margin-top: 40px; font-size: 1rem; color: var(--text-gray); font-style: italic;">
+                    <span style="font-size: 3.5rem; font-weight: 700; color: var(--gold); line-height: 1; display: inline-block; margin-right: 5px; vertical-align: middle;">E</span>l video será presentado durante el evento como parte del pitch emocional, y será elemento de venta junto con otro en inglés y en español de la influencer @GIRLANDGALLERY (TikTok) recorriendo la obra.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="catalogo" data-aos="fade-up">
+        <h2 class="section-title">Catálogo de Obras</h2>
+        <p style="text-align: center; font-size: 1.2rem; color: var(--text-gray); margin-bottom: 60px;">
+            39 obras disponibles • Colección completa
+        </p>
+        
+        <div class="storyboard-special" data-aos="fade-up">
+            <div class="storyboard-badge">PIEZA ÚNICA DE COLECCIÓN</div>
+            <div class="storyboard-title">STORYBOARD COMPLETO<br>EL PALOMAR</div>
+            <div class="storyboard-subtitle">Octavio Aráuz • Director de Fotografía</div>
+            
+            <!-- STORYBOARD PREVIEW VISUAL -->
+            <div style="margin: 40px auto; max-width: 900px; background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%); padding: 50px; border-radius: 8px; box-shadow: 0 20px 60px rgba(0,0,0,0.8), inset 0 0 0 1px rgba(184, 149, 106, 0.3);">
+                <div style="background: #0a0a0a; padding: 40px; border-radius: 4px; position: relative; box-shadow: inset 0 0 40px rgba(0,0,0,0.9);">
+                    <!-- Perforaciones película superior -->
+                    <div style="position: absolute; top: 10px; left: 0; right: 0; height: 20px; background: repeating-linear-gradient(to right, transparent 0px, transparent 15px, #333 15px, #333 20px, transparent 20px, transparent 40px);"></div>
+                    <!-- Perforaciones película inferior -->
+                    <div style="position: absolute; bottom: 10px; left: 0; right: 0; height: 20px; background: repeating-linear-gradient(to right, transparent 0px, transparent 15px, #333 15px, #333 20px, transparent 20px, transparent 40px);"></div>
+                    
+                    <div style="text-align: center; margin-bottom: 30px;">
+                        <h3 style="color: #B8956A; font-size: 28px; font-weight: 700; letter-spacing: 4px; margin-bottom: 10px; font-family: 'Courier New', monospace;">EL PALOMAR</h3>
+                        <p style="color: #888; font-size: 13px; letter-spacing: 2px; font-family: 'Courier New', monospace;">STORYBOARD PREVIEW • DIBUJADO A MANO</p>
+                    </div>
+                    
+                    <!-- Grid 2x2 frames -->
+                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 25px; margin: 40px 0;">
+                        <div style="position: relative; background: #000; border: 2px solid #333; border-radius: 2px; overflow: hidden; aspect-ratio: 16/9;">
+                            <img src="https://i.imgur.com/5plCDPO.jpg" alt="Frame 001" style="width: 100%; height: 100%; object-fit: contain; display: block;">
+                            <div style="position: absolute; bottom: 0; right: 0; background: rgba(184, 149, 106, 0.9); color: #000; padding: 4px 12px; font-size: 11px; font-weight: 700; letter-spacing: 1px; font-family: 'Courier New', monospace;">001</div>
+                        </div>
+                        <div style="position: relative; background: #000; border: 2px solid #333; border-radius: 2px; overflow: hidden; aspect-ratio: 16/9;">
+                            <img src="https://i.imgur.com/AxfyP8B.jpg" alt="Frame 002" style="width: 100%; height: 100%; object-fit: contain; display: block;">
+                            <div style="position: absolute; bottom: 0; right: 0; background: rgba(184, 149, 106, 0.9); color: #000; padding: 4px 12px; font-size: 11px; font-weight: 700; letter-spacing: 1px; font-family: 'Courier New', monospace;">002</div>
+                        </div>
+                        <div style="position: relative; background: #000; border: 2px solid #333; border-radius: 2px; overflow: hidden; aspect-ratio: 16/9;">
+                            <img src="https://i.imgur.com/bzh574I.jpg" alt="Frame 003" style="width: 100%; height: 100%; object-fit: contain; display: block;">
+                            <div style="position: absolute; bottom: 0; right: 0; background: rgba(184, 149, 106, 0.9); color: #000; padding: 4px 12px; font-size: 11px; font-weight: 700; letter-spacing: 1px; font-family: 'Courier New', monospace;">003</div>
+                        </div>
+                        <div style="position: relative; background: #000; border: 2px solid #333; border-radius: 2px; overflow: hidden; aspect-ratio: 16/9;">
+                            <img src="https://i.imgur.com/2o2S9XN.jpg" alt="Frame 004" style="width: 100%; height: 100%; object-fit: contain; display: block;">
+                            <div style="position: absolute; bottom: 0; right: 0; background: rgba(184, 149, 106, 0.9); color: #000; padding: 4px 12px; font-size: 11px; font-weight: 700; letter-spacing: 1px; font-family: 'Courier New', monospace;">004</div>
+                        </div>
+                    </div>
+                    
+                    <div style="text-align: center; margin-top: 30px; padding: 20px; background: rgba(184, 149, 106, 0.1); border-radius: 4px;">
+                        <p style="color: #B8956A; font-size: 14px; letter-spacing: 1px; font-family: 'Courier New', monospace; margin-bottom: 8px;">PREVIEW • 4 DE 139 FRAMES</p>
+                        <p style="color: #888; font-size: 12px; font-family: 'Courier New', monospace;">Storyboard completo: 139 dibujos originales a mano</p>
+                    </div>
+                    
+                    <div style="text-align: center; margin-top: 35px; padding-top: 25px; border-top: 1px solid #333;">
+                        <p style="color: #B8956A; font-size: 13px; letter-spacing: 2px; margin: 8px 0; font-family: 'Courier New', monospace;">OCTAVIO ARÁUZ</p>
+                        <p style="color: #666; font-size: 11px; text-transform: uppercase; font-family: 'Courier New', monospace;">Director de Fotografía</p>
+                        <p style="color: #B8956A; font-size: 13px; letter-spacing: 2px; margin: 20px 0 8px; font-family: 'Courier New', monospace;">RAFAEL FARGA</p>
+                        <p style="color: #666; font-size: 11px; text-transform: uppercase; font-family: 'Courier New', monospace;">Director</p>
+                    </div>
+                </div>
+            </div>
+            
+            <p style="max-width: 700px; margin: 0 auto 30px; font-size: 1.05rem; line-height: 1.7;">
+                Un documento histórico del proceso creativo, dibujado escena por escena por uno de los directores de fotografía más destacados del cine mexicano contemporáneo. El storyboard será montado tipo cinta cinematográfica, capturando la esencia visual completa de la película.
+            </p>
+            <div class="storyboard-price">Precio de salida: $80,000 MXN</div>
+            <p style="font-size: 0.95rem; color: var(--text-gray); font-style: italic;">
+                Precio estimado: $150,000 MXN • Nivel Co-Productor incluido
+            </p>
+        </div>
+        
+        <div class="catalog-grid" id="catalog-container"></div>
+    </section>
+
+    <section id="participar" data-aos="fade-up">
+        <h2 class="section-title">Cómo Participar</h2>
+        
+        <div class="flexible-box" data-aos="fade-up">
+            <h3>Participación a la Carta</h3>
+            <p style="font-size: 1.1rem; line-height: 1.7; max-width: 800px; margin: 0 auto;">
+                <strong>Cualquier obra adquirida te convierte automáticamente en productor del proyecto.</strong><br><br>
+                Los niveles que presentamos son sugerencias basadas en montos, pero puedes armar tu propia combinación de obras según tu presupuesto e interés.
+            </p>
+        </div>
+        
+        <div class="levels-grid">
+            <div class="level-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="level-name">PRODUCTOR ASOCIADO</div>
+                <div class="level-price">A partir de $50,000 MXN</div>
+                <ul class="level-benefits">
+                    <li>Certificado oficial de participación</li>
+                    <li>Mención en créditos de la película</li>
+                    <li>Invitación a estreno mundial</li>
+                </ul>
+            </div>
+            
+            <div class="level-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="level-name">CO-PRODUCTOR</div>
+                <div class="level-price">A partir de $150,000 MXN</div>
+                <ul class="level-benefits">
+                    <li>Todo lo anterior</li>
+                    <li>Acceso a set durante rodaje</li>
+                    <li>Still fotográfico de la película</li>
+                    <li>Pieza única no seriada</li>
+                </ul>
+            </div>
+            
+            <div class="level-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="level-name">PRODUCTOR ARTÍSTICO</div>
+                <div class="level-price">A partir de $300,000 MXN</div>
+                <ul class="level-benefits">
+                    <li>Todo lo anterior</li>
+                    <li>Participación en monetización</li>
+                    <li>Logo de empresa en créditos</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="section-divider"></div>
+        
+        <div class="level-card featured" data-aos="fade-up" style="max-width: 900px; margin: 60px auto 0;">
+            <div style="text-align: center; margin-bottom: 40px;">
+                <div style="display: inline-block; background: var(--gold); color: white; padding: 8px 20px; border-radius: 20px; font-size: 0.85rem; font-weight: 700; letter-spacing: 1px; margin-bottom: 20px;">
+                    NIVEL EXCLUSIVO
+                </div>
+                <div class="level-name" style="font-size: 2rem; margin-bottom: 10px;">PRODUCTOR EJECUTIVO</div>
+                <div style="font-size: 1.1rem; color: var(--text-gray); margin-bottom: 20px;">
+                    Exclusivo para quien adquiera el tríptico curatorial<br>
+                    <span style="font-size: 0.95rem; font-style: italic;">(KENT-01-10: Daniel Kent "Paraíso o del ego trascendido", OLME-01-22: Olmedo Quimbita "Amanecer", VLA-01-05: Vladimir Cora)</span>
+                </div>
+            </div>
+            
+            <ul class="level-benefits" style="columns: 2; column-gap: 40px;">
+                <li>Productor Ejecutivo con crédito destacado</li>
+                <li>Acceso ilimitado a rodaje</li>
+                <li>Participación en reuniones de producción</li>
+                <li>Mención destacada en press kit</li>
+                <li>3% participación en monetización</li>
+                <li>Still fotográfico formato grande</li>
+                <li>Cena privada con director y artistas</li>
+                <li>Dossier de producción completo</li>
+            </ul>
+        </div>
+        
+        <div class="fiscal-box" data-aos="fade-up">
+            <h4>FLEXIBILIDAD PATRIMONIAL</h4>
+            <p style="font-size: 1rem; line-height: 1.7; color: var(--text-gray);">
+                Para coleccionistas que requieran estructurar su adquisición de manera fiscal eficiente o con esquemas de pago personalizados, ofrecemos asesoría confidencial.
+            </p>
+            <p style="margin-top: 15px; font-size: 0.95rem; font-style: italic; color: var(--text-gray);">
+                Contacte a su Art Advisor: <strong style="color: var(--gold);">33 34 40 35 98</strong>
+            </p>
+        </div>
+    </section>
+
+    <section data-aos="fade-up">
+        <h2 class="section-title">Programa del Evento</h2>
+        <div class="timeline">
+            <div class="timeline-item" data-aos="fade-right" data-aos-delay="100">
+                <div class="timeline-time">19:00 – 19:30</div>
+                <div class="timeline-content">
+                    <h3>Llegada / Registro / Cóctel</h3>
+                    <p>Recepción con Art Advisors. DJ ZAHER. Los artistas circulan entre las obras.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item" data-aos="fade-right" data-aos-delay="200">
+                <div class="timeline-time">19:30 – 19:45</div>
+                <div class="timeline-content">
+                    <h3>Pitch Emocional</h3>
+                    <p>Katherine Bergengruen + Rafael Farga + Michael Rowe. 15 minutos.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item" data-aos="fade-right" data-aos-delay="300">
+                <div class="timeline-time">19:45 – 20:45</div>
+                <div class="timeline-content">
+                    <h3>Subasta</h3>
+                    <p>Participación presencial, a distancia y en ausencia.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item" data-aos="fade-right" data-aos-delay="400">
+                <div class="timeline-time">20:45 – 21:30</div>
+                <div class="timeline-content">
+                    <h3>Celebración / Networking</h3>
+                    <p>Brindis con compradores en Tasting Room by Tierra Noble en Manifesto. Fotos con obras adquiridas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section data-aos="fade-up" style="text-align: center;">
+        <h2 class="section-title">Para Conocer Más</h2>
+        <div class="curatorial-text">
+            <p>Para profundizar en el proyecto, conocer detalles sobre los niveles de participación, o resolver cualquier inquietud, puede agendar una reunión personalizada.</p>
+            
+            <div style="margin-top: 40px; padding: 40px; background: white; border-radius: 16px; box-shadow: 0 4px 30px rgba(0,0,0,0.08);">
+                <div style="font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 600; margin-bottom: 20px;">
+                    Manifesto / eme[art]space
+                </div>
+                <div class="footer-contact">
+                    WhatsApp: 33 34 40 35 98
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p style="font-size: 0.9rem; color: #999;">
+            © 2026 Subasta por Amor al Cine. Todos los derechos reservados.
+        </p>
+    </footer>
+
+    <div id="modals-container"></div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // ==== DATOS COMPLETOS - 39 OBRAS ====
+        const obras = [
+            {"id":"JA-01-01","autor":"Jorge Alzaga","titulo":"Bodega Con Flores","tecnica":"Pastel/Papel","dimensiones":"50x70","ano":"S/F","imagen":"https://i.imgur.com/yMEGjbO.jpg"},
+            {"id":"JA-02-02","autor":"Jorge Alzaga","titulo":"Desconocido","tecnica":"Pastel/Papel","dimensiones":"68x87","ano":"S/F","imagen":"https://i.imgur.com/PaK60KT.jpg"},
+            {"id":"JA-03-03","autor":"Jorge Alzaga","titulo":"desconocido","tecnica":"Pastel/Papel","dimensiones":"90x67","ano":"S/F","imagen":"https://i.imgur.com/q8lKMxt.jpg"},
+            {"id":"VLA-01-05","autor":"Vladimir Cora","titulo":"Desconocido","tecnica":"Carboncillo","dimensiones":"100x85","ano":"2001","imagen":"https://i.imgur.com/TzEX13A.jpg"},
+            {"id":"VLA-02-06","autor":"Vladimir Cora","titulo":"Desconocido","tecnica":"Carboncillo","dimensiones":"83x100","ano":"S/F","imagen":"https://i.imgur.com/zGvmNOq.jpg"},
+            {"id":"VLA-03-07","autor":"Vladimir Cora","titulo":"desconocido","tecnica":"Carboncillo","dimensiones":"92x100","ano":"S/F","imagen":"https://i.imgur.com/LHwgaIQ.jpg"},
+            {"id":"VLA-04-08","autor":"Vladimir Cora","titulo":"Desconocido","tecnica":"Carboncillo","dimensiones":"63x82","ano":"S/F","imagen":"https://i.imgur.com/84tws1O.jpg"},
+            {"id":"VLA-05-09","autor":"Vladimir Cora","titulo":"Desconocido","tecnica":"Carboncillo","dimensiones":"63x68","ano":"S/F","imagen":"https://i.imgur.com/aDJHEbW.jpg"},
+            {"id":"KENT-01-10","autor":"Daniel Kent","titulo":"Paraiso o del ego trascendido","tecnica":"Grabado","dimensiones":"Consultar","ano":"S/F","imagen":"https://i.imgur.com/K4mt4u6.jpg"},
+            {"id":"KENT-02-11","autor":"Daniel Kent","titulo":"Infierno o del ego torturado","tecnica":"Grabado","dimensiones":"73x111","ano":"S/F","imagen":"https://i.imgur.com/zCFtltv.jpg"},
+            {"id":"KENT-03-12","autor":"Daniel Kent","titulo":"Infierno o del ego torturado","tecnica":"TECNICA","dimensiones":"Consultar","ano":"S/F","imagen":"https://i.imgur.com/vmlMVic.jpg"},
+            {"id":"KENT-04-13","autor":"Daniel Kent","titulo":"Desconocido","tecnica":"TECNICA","dimensiones":"Consultar","ano":"S/F","imagen":"https://i.imgur.com/SbNdLhc.jpg"},
+            {"id":"KENT-05-14","autor":"Daniel Kent","titulo":"Desconocido","tecnica":"TECNICA","dimensiones":"Consultar","ano":"S/F","imagen":"https://i.imgur.com/4v2NlVy.jpg"},
+            {"id":"KENT-06-15","autor":"Daniel Kent","titulo":"Desconocido","tecnica":"TECNICA","dimensiones":"Consultar","ano":"S/F","imagen":"https://i.imgur.com/AkIawNo.jpg"},
+            {"id":"KENT-07-16","autor":"Daniel Kent","titulo":"Desconocido","tecnica":"TECNICA","dimensiones":"Consultar","ano":"S/F","imagen":"https://i.imgur.com/IK2u7K5.jpg"},
+            {"id":"DES-01-17","autor":"Desconocido Japones ","titulo":"Desconocido","tecnica":"Acrilico sobre tela","dimensiones":"136x69","ano":"S/F","imagen":"https://i.imgur.com/qxMIbYt.jpg"},
+            {"id":"DES-02-18","autor":"Desconocido Japones ","titulo":"Desconocido","tecnica":"Acrilico sobre tela","dimensiones":"136x69","ano":"S/F","imagen":"https://i.imgur.com/087MKWl.jpg"},
+            {"id":"PET-01-19","autor":"Peter Palombi","titulo":"Laura","tecnica":"Óleo sobre tela","dimensiones":"92x100","ano":"S/F","imagen":"https://i.imgur.com/ng2Xkfc.jpg"},
+            {"id":"PET-02-20","autor":"Peter Palombi","titulo":"Ana","tecnica":"Óleo sobre tela","dimensiones":"94x120","ano":"S/F","imagen":"https://i.imgur.com/Rwilbu2.jpg"},
+            {"id":"VIC-01-21","autor":"Victor Hugo","titulo":"Desconocido ","tecnica":"Óleo sobre tela","dimensiones":"147x169","ano":"S/F","imagen":"https://i.imgur.com/7X3GHGL.jpg"},
+            {"id":"OLME-01-22","autor":"Olmedo Quimbita","titulo":"Amanecer","tecnica":"Óleo sobre tela","dimensiones":"107X83","ano":"S/F","imagen":"https://i.imgur.com/XtfFSZO.jpg"},
+            {"id":"OLME-02-23","autor":"Olmedo Quimbita","titulo":"Desconocido","tecnica":"Óleo sobre tela","dimensiones":"133X169","ano":"S/F","imagen":"https://i.imgur.com/ijOHP7i.jpg"},
+            {"id":"OLME-03-24","autor":"Olmedo Quimbita","titulo":"Fiesta en Ejipto","tecnica":"Óleo sobre tela","dimensiones":"86x110","ano":"S/F","imagen":"https://i.imgur.com/tY0dwsU.jpg"},
+            {"id":"OLME-04-25","autor":"Olmedo Quimbita","titulo":"Desconocido","tecnica":"Óleo sobre tela","dimensiones":"81x110","ano":"S/F","imagen":"https://i.imgur.com/sBImXw9.jpg"},
+            {"id":"OLME-05-26","autor":"Olmedo Quimbita","titulo":"Sueños Nocturnos","tecnica":"Óleo sobre tela","dimensiones":"86x110","ano":"S/F","imagen":"https://i.imgur.com/P94x0zS.jpg"},
+            {"id":"OLME-06-27","autor":"Olmedo Quimbita","titulo":"Desconocido","tecnica":"Óleo sobre tela","dimensiones":"99x91","ano":"S/F","imagen":"https://i.imgur.com/3KemA8j.jpg"},
+            {"id":"OLME-07-28","autor":"Olmedo Quimbita","titulo":"Meditación","tecnica":"Óleo sobre tela","dimensiones":"71X100","ano":"S/F","imagen":"https://i.imgur.com/LZvqTI3.jpg"},
+            {"id":"FORS-01-29","autor":"José Fors","titulo":"Desconocido","tecnica":"Óleo sobre tela","dimensiones":"128X105","ano":"S/F","imagen":"https://i.imgur.com/RZenmTZ.jpg"},
+            {"id":"FORS-02-30","autor":"Desconocido","titulo":"Niña Mutante","tecnica":"Óleo sobre tela","dimensiones":"125x100","ano":"S/F","imagen":"https://i.imgur.com/o5il4rw.jpg"},
+            {"id":"FORS-03-31","autor":"Desconocido","titulo":"La Guardia","tecnica":"Óleo sobre tela","dimensiones":"125x100","ano":"S/F","imagen":"https://i.imgur.com/hWcc4bn.jpg"},
+            {"id":"MACIAS-01-32","autor":"Juan Carlos Macías","titulo":"Desconocido","tecnica":"Monotipo","dimensiones":"Consultar","ano":"S/F","imagen":"https://i.imgur.com/45EwDMC.jpg"},
+            {"id":"MACIAS-02-33","autor":"Juan Carlos Macías","titulo":"Desconocido","tecnica":"Monotipo","dimensiones":"Consultar","ano":"S/F","imagen":"https://i.imgur.com/UlR4xv5.jpg"},
+            {"id":"MACIAS-03-34","autor":"Juan Carlos Macías","titulo":"Desconocido","tecnica":"Monotipo","dimensiones":"Consultar","ano":"S/F","imagen":"https://i.imgur.com/Y7IlYVr.jpg"},
+            {"id":"MARI-01-35","autor":"Gabriel Mariscal","titulo":"Desconocido","tecnica":"Consultar","dimensiones":"Consultar","ano":"S/F","imagen":"https://i.imgur.com/tGaafVz.jpg"},
+            {"id":"MARI-02-36","autor":"Gabriel Mariscal","titulo":"Desconocido","tecnica":"Consultar","dimensiones":"Consultar","ano":"S/F","imagen":"https://i.imgur.com/bqocmXx.jpg"},
+            {"id":"MARI-03-37","autor":"Gabriel Mariscal","titulo":"Desconocido","tecnica":"Consultar","dimensiones":"Consultar","ano":"S/F","imagen":"https://i.imgur.com/zDcinOv.jpg"},
+            {"id":"MARI-04-38","autor":"Gabriel Mariscal","titulo":"Desconocido","tecnica":"Consultar","dimensiones":"Consultar","ano":"S/F","imagen":"https://i.imgur.com/wQswsKW.jpg"},
+            {"id":"MARI-05-39","autor":"Gabriel Mariscal","titulo":"Desconocido","tecnica":"Consultar","dimensiones":"Consultar","ano":"S/F","imagen":"https://i.imgur.com/d5lBuhh.jpg"}
+        ];
+
+        // Generar catálogo
+        const catalogContainer = document.getElementById('catalog-container');
+        obras.forEach((obra, i) => {
+            const card = document.createElement('div');
+            card.className = 'artwork-card';
+            card.setAttribute('data-aos', 'fade-up');
+            card.setAttribute('data-aos-delay', (i % 6) * 100);
+            card.onclick = () => openModal(i);
+            
+            card.innerHTML = `
+                <img src="${obra.imagen}" 
+                     alt="${obra.autor} - ${obra.titulo}" 
+                     class="artwork-image" 
+                     loading="lazy"
+                     onerror="this.classList.add('placeholder'); this.alt='${obra.autor}';">
+                <div class="artwork-info">
+                    <div class="artwork-artist">${obra.autor}</div>
+                    <div class="artwork-title">${obra.titulo}</div>
+                    <div class="artwork-details">
+                        ${obra.tecnica}<br>
+                        ${obra.dimensiones}<br>
+                        ${obra.ano}
+                    </div>
+                </div>
+            `;
+            
+            catalogContainer.appendChild(card);
+        });
+
+        // Generar modals
+        const modalsContainer = document.getElementById('modals-container');
+        obras.forEach((obra, i) => {
+            const prevI = i > 0 ? i - 1 : obras.length - 1;
+            const nextI = i < obras.length - 1 ? i + 1 : 0;
+            
+            const modal = document.createElement('div');
+            modal.id = `modal-${i}`;
+            modal.className = 'modal';
+            modal.innerHTML = `
+                <div class="modal-content">
+                    <span class="modal-close" onclick="closeModal(${i})">&times;</span>
+                    <button class="modal-nav modal-prev" onclick="navigateModal(${i}, ${prevI})">←</button>
+                    <button class="modal-nav modal-next" onclick="navigateModal(${i}, ${nextI})">→</button>
+                    <div class="modal-grid">
+                        <div class="modal-image-container">
+                            <img src="${obra.imagen}" alt="${obra.autor} - ${obra.titulo}">
+                        </div>
+                        <div class="modal-info">
+                            <div class="modal-artist">${obra.autor}</div>
+                            <h2 class="modal-title">${obra.titulo}</h2>
+                            <div class="modal-details">
+                                <p><strong>Técnica:</strong> ${obra.tecnica}</p>
+                                <p><strong>Dimensiones:</strong> ${obra.dimensiones}</p>
+                                <p><strong>Año:</strong> ${obra.ano}</p>
+                                <p><strong>ID:</strong> ${obra.id}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            modalsContainer.appendChild(modal);
+        });
+
+        // Modal functions
+        function openModal(index) {
+            document.getElementById(`modal-${index}`).style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(index) {
+            document.getElementById(`modal-${index}`).style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        function navigateModal(currentIndex, newIndex) {
+            closeModal(currentIndex);
+            openModal(newIndex);
+        }
+
+        window.onclick = function(event) {
+            if (event.target.className === 'modal') {
+                event.target.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // AOS init
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Nav scroll effect
+        const nav = document.getElementById('nav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>
